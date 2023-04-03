@@ -23,7 +23,7 @@ jobs:
       - name: test
         run: |
           echo "test1"
-          echo "test2"
+          echo "test_2"
       #- name: push
       #  run: |
       #      curl --request POST \
