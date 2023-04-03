@@ -1,0 +1,33 @@
+name: circleci_push
+
+on:
+  push:
+    branches:
+      - dev
+      #- qa
+      #- uat
+      #- main
+      #- release
+
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+  
+      - name: test
+        run: |
+          echo "test1"
+          echo "test2"
+      #- name: push
+      #  run: |
+      #      curl --request POST \
+      #      --url https://circleci.com/api/v2/project/gh/EurostarDigital/salesforce/pipeline \
+      #      --header 'Circle-Token: '${{ secrets.CIRCLE_CI_API}} \
+      #      --header 'content-type: application/json' \
+      #      --data '{"branch":"'$GITHUB_REF_NAME'","parameters":{"eventType":"push", "branchName":"'$GITHUB_REF_NAME'", "sourceBranchName":"false"}}'
