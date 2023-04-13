@@ -1,0 +1,19 @@
+name:Cloudhub - byild
+
+on:
+  push:
+    branches: [ dev ]
+  pull_request:
+    branches: [ dev ]
+
+  jobs:
+    build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Build with Maven
+        run: mvn clean -B package -s .maven/settings.xml
